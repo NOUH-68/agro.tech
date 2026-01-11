@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroTech CI - Experts en Entretien Agronomique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-left a {
+            text-decoration: none;
+            color: #2d5016;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-left a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6da544;
+            transition: width 0.3s;
+        }
+
+        .nav-left a:hover::after {
+            width: 100%;
+        }
+
+        .nav-left a:hover {
+            color: #6da544;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #2d5016;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: #6da544;
+        }
+
+        .contact-btn {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #6da544, #8bc34a);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(109, 165, 68, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(109, 165, 68, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 80px 50px;
+            background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%236da544" opacity="0.05"/></svg>');
+            background-size: 200px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(109, 165, 68, 0.15);
+            color: #2d5016;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 58px;
+            font-weight: 900;
+            color: #2d5016;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: #6da544;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #5a7a3c;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #6da544;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .cta-primary {
+            padding: 16px 35px;
+            background: linear-gradient(135deg, #6da544, #8bc34a);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(109, 165, 68, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(109, 165, 68, 0.4);
+        }
+
+        .cta-secondary {
+            padding: 16px 35px;
+            background: white;
+            color: #2d5016;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            border: 2px solid #6da544;
+            transition: all 0.3s;
+        }
+
+        .cta-secondary:hover {
+            background: #6da544;
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 50px;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(109, 165, 68, 0.1);
+            color: #6da544;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #2d5016;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f1f8e9, #ffffff);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6da544, #8bc34a);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(109, 165, 68, 0.15);
+            border-color: #6da544;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #6da544, #8bc34a);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(109, 165, 68, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .service-features li {
+            color: #5a7a3c;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #6da544;
+            font-weight: bold;
+        }
+
+        /* Technology Section */
+        .technology-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, #2d5016 0%, #3d6b20 100%);
+            color: white;
+        }
+
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .tech-text h2 {
+            font-size: 42px;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+
+        .tech-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .tech-feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .tech-feature h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .tech-feature p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .tech-images {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .tech-images img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tech-images img:first-child {
+            grid-column: 1 / -1;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 50px;
+            background: #fafafa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6da544, #8bc34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            margin: 0 auto 25px;
+            box-shadow: 0 5px 20px rgba(109, 165, 68, 0.3);
+        }
+
+        .process-step h3 {
+            font-size: 22px;
+            color: #2d5016;
+            margin-bottom: 15px;
+        }
+
+        .process-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 50px;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f1f8e9, #ffffff);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 48px;
+            color: #6da544;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6da544, #8bc34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            color: #2d5016;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, #6da544 0%, #8bc34a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .contact-section p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-method h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contact-method a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #6da544;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5016;
+            color: white;
+            padding: 30px 50px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Quote Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal h2 {
+            font-size: 32px;
+            color: #2d5016;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d5016;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #6da544;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6da544, #8bc34a);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-left {
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 60px 20px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 38px;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .tech-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <a onclick="scrollToSection('hero')">Accueil</a>
+            <a onclick="scrollToSection('services')">Services</a>
+            <a onclick="scrollToSection('technologie')">Technologie</a>
+            <a onclick="scrollToSection('temoignages')">Témoignages</a>
+        </div>
+        <div class="logo">🌱 AGRO<span>TECH</span></div>
+        <a href="#" class="contact-btn" onclick="openModal()">Demander un devis</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏆 N°1 en Côte d'Ivoire</div>
+            <h1 class="hero-title">
+                Votre récolte mérite <span>l'excellence</span>
+            </h1>
+            <p class="hero-subtitle">
+                Confiez vos plantations à nos experts agronomes équipés des dernières technologies pour maximiser vos rendements et protéger votre investissement.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Hectares gérés</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Clients satisfaits</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">+45%</span>
+                    <span class="stat-label">Rendement moyen</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#" class="cta-primary" onclick="openModal()">
+                    Obtenir un devis gratuit →
+                </a>
+                <a href="#" class="cta-secondary" onclick="scrollToSection('services')">
+                    Découvrir nos services
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="image/champ-de-culture-de-la-machine-agricole-tracteur.jpg"Agriculture moderne">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <div class="section-badge">Nos Expertises</div>
+            <h2 class="section-title">Des Solutions Complètes pour Vos Cultures</h2>
+            <p class="section-description">
+                De la plantation à la récolte, nos équipes d'agronomes certifiés utilisent les technologies les plus avancées pour garantir la santé et la productivité de vos cultures.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌾</div>
+                <h3>Entretien Agronomique</h3>
+                <p>Gestion professionnelle de vos plantations avec suivi personnalisé et interventions régulières.</p>
+                <ul class="service-features">
+                    <li>Désherbage mécanique et manuel</li>
+                    <li>Taille et élagage professionnels</li>
+                    <li>Fertilisation raisonnée</li>
+                    <li>Irrigation optimisée</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3>Analyse des Sols</h3>
+                <p>Diagnostic précis de vos terres pour optimiser les rendements et préserver la fertilité.</p>
+                <ul class="service-features">
+                    <li>Prélèvements et analyses en laboratoire</li>
+                    <li>Cartographie de fertilité</li>
+                    <li>Recommandations d'amendements</li>
+                    <li>Suivi de l'évolution du sol</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛰️</div>
+                <h3>Agriculture de Précision</h3>
+                <p>Technologies de pointe pour une gestion intelligente et économique de vos exploitations.</p>
+                <ul class="service-features">
+                    <li>Imagerie satellite et drones</li>
+                    <li>Capteurs IoT en temps réel</li>
+                    <li>Cartographie des rendements</li>
+                    <li>Détection précoce des maladies</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Protection Phytosanitaire</h3>
+                <p>Lutte raisonnée contre les ravageurs et maladies pour protéger vos cultures durablement.</p>
+                <ul class="service-features">
+                    <li>Traitement ciblé des parasites</li>
+                    <li>Produits biologiques certifiés</li>
+                    <li>Surveillance sanitaire continue</li>
+                    <li>Conseil en biocontrôle</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Gestion de l'Irrigation</h3>
+                <p>Systèmes d'irrigation modernes pour économiser l'eau et maximiser la croissance.</p>
+                <ul class="service-features">
+                    <li>Installation de goutte-à-goutte</li>
+                    <li>Programmation automatique</li>
+                    <li>Sondes d'humidité du sol</li>
+                    <li>Maintenance préventive</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Conseil & Formation</h3>
+                <p>Accompagnement expert pour développer vos compétences et améliorer vos pratiques.</p>
+                <ul class="service-features">
+                    <li>Audit de vos pratiques actuelles</li>
+                    <li>Formation de vos équipes</li>
+                    <li>Plan de culture sur-mesure</li>
+                    <li>Veille technique et réglementaire</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technologie" class="technology-section">
+        <div class="tech-content">
+            <div class="tech-images">
+                <img src="image/un-camion-travaillant-dans-un-champ-par-une-journee-ensoleillee.jpg" alt="Technologie agricole" width="130px" height="130px">
+                <img src="image/un-ouvrier-agricole-afro-americain-joyeux-tenant-une-caisse-pleine-de-legumes-verts-murs-locaux-ecologiques-provenant-d-une-recolte-durable-ferme-de-serre-de-bio-permaculture-entrepreneuriale.jpg" alt="Équipement moderne" width="130px" height="130px">
+                <img src="image/drone-pulverisant-de-l-engrais-sur-les-plantes-vertes-vegetales-technologie-agricole-automatisation-agricole.jpg" alt="Drone agricole" width="130px" height="130px">
+                <img src="image/agriculteur-africain-prenant-des-notes-sur-une-ferme.jpg" alt="expertise" width="130px" height="130px">
+                <img src="image/jardinier-dans-un-tablier-guy-africain-dans-une-serre-fleurs-dans-un-pot.jpg" alt="professionnel" width="130px" height="130px">
+                <img src="image/vue-laterale-des-femmes-travaillant-ensemble.jpg" alt="vue-laterale-des-femmes-travaillant-ensemble" width="130px" height="130px">
+                <img src="image/vue-photorealiste-des-africains-recoltant-des-legumes-et-des-cereales.jpg" alt="vue-photorealiste-des-africains-recoltant-des-legumes-et-des-cereales" width="130px" height="130px">
+                <img src="image/vue-photorealiste-des-africains-recoltant-des-legumes-et-des-cereales (2).jpg" alt="vue-photorealiste-des-africains-recoltant-des-legumes-et-des-cereales" width="100px" height="100px">
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="processus" class="process-section">
+        <div class="section-header">
+            <div class="section-badge">Notre Méthode</div>
+            <h2 class="section-title">Un Processus Éprouvé en 4 Étapes</h2>
+            <p class="section-description">
+                De l'analyse initiale à la récolte abondante, nous vous accompagnons à chaque étape avec professionnalisme et transparence.
+            </p>
+        </div>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Diagnostic Gratuit</h3>
+                <p>Visite de votre exploitation, analyse des sols et évaluation des besoins spécifiques de vos cultures.</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Plan d'Action Personnalisé</h3>
+                <p>Élaboration d'un programme d'entretien sur-mesure avec calendrier des interventions et budget détaillé.</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Interventions Régulières</h3>
+                <p>Nos équipes certifiées interviennent selon le planning établi avec équipements professionnels et produits certifiés.</p>
+            </div>
+
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Suivi & Optimisation</h3>
+                <p>Rapports détaillés après chaque intervention, ajustements en temps réel et accompagnement jusqu'à la récolte.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="temoignages" class="testimonials-section">
+        <div class="section-header">
+            <div class="section-badge">Ils Nous Font Confiance</div>
+            <h2 class="section-title">Ce Que Disent Nos Clients</h2>
+            <p class="section-description">
+                Des centaines d'agriculteurs et planteurs nous font confiance pour l'entretien de leurs exploitations.
+            </p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "Depuis que j'ai confié mes 50 hectares de cacao à AgroTech CI, mes rendements ont augmenté de 40%. Leur suivi est rigoureux et leurs conseils toujours pertinents. Je recommande vivement !"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">KM</div>
+                    <div class="author-info">
+                        <h4>Kouassi Michel</h4>
+                        <p>Producteur de cacao - Divo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "L'utilisation de drones pour surveiller ma plantation d'hévéa a été une révélation. Je détecte les problèmes avant qu'ils ne s'aggravent. Service professionnel et très réactif."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AB</div>
+                    <div class="author-info">
+                        <h4>Aya Bamba</h4>
+                        <p>Exploitante hévéa - Adzopé</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "Excellente équipe ! Ils ont transformé mes 20 hectares de palmiers négligés en une plantation florissante. Leur expertise et leur matériel moderne font vraiment la différence."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">YT</div>
+                    <div class="author-info">
+                        <h4>Yao Thomas</h4>
+                        <p>Producteur palmier - Dabou</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Prêt à Augmenter Vos Rendements ?</h2>
+        <p>Contactez-nous dès aujourd'hui pour un diagnostic gratuit de votre exploitation</p>
+
+        <div class="contact-methods">
+            <div class="contact-method">
+                <div class="contact-icon">📞</div>
+                <h3>Téléphone</h3>
+                <a href="tel:+2250707000000">+225 07 07 00 00 00</a>
+            </div>
+
+            <div class="contact-method">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:contact@agrotech-ci.com">contact@agrotech-ci.com</a>
+            </div>
+
+            <div class="contact-method">
+                <div class="contact-icon">📍</div>
+                <h3>Bureau</h3>
+                <a href="#">Cocody, Abidjan, Côte d'Ivoire</a>
+            </div>
+
+            <div class="contact-method">
+                <div class="contact-icon">💬</div>
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/2250707000000">Démarrer la conversation</a>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank" class="social-link">f</a>
+            <a href="https://www.instagram.com" target="_blank" class="social-link">📷</a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-link">in</a>
+            <a href="https://www.youtube.com" target="_blank" class="social-link">▶</a>
+            <a href="https://twitter.com" target="_blank" class="social-link">🐦</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 AgroTech CI - Tous droits réservés | Expert en entretien agronomique en Côte d'Ivoire</p>
+    </footer>
+
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <h2>Demandez Votre Devis Gratuit</h2>
+            <p>Remplissez ce formulaire et notre équipe vous contactera sous 24h pour un diagnostic personnalisé.</p>
+            
+            <form onsubmit="handleQuote(event)">
+                <div class="form-group">
+                    <label>Nom complet *</label>
+                    <input type="text" placeholder="Votre nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Téléphone *</label>
+                    <input type="tel" placeholder="+225 XX XX XX XX XX" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="votre@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Type de culture *</label>
+                    <select required>
+                        <option value="">Sélectionnez...</option>
+                        <option value="cacao">Cacao</option>
+                        <option value="cafe">Café</option>
+                        <option value="hevea">Hévéa</option>
+                        <option value="palmier">Palmier à huile</option>
+                        <option value="manioc">Manioc</option>
+                        <option value="mais">Maïs</option>
+                        <option value="anacarde">Anacarde (Cajou)</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Surface (en hectares) *</label>
+                    <input type="number" placeholder="Ex: 10" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Localisation *</label>
+                    <input type="text" placeholder="Ville ou commune" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Services souhaités</label>
+                    <textarea placeholder="Décrivez vos besoins (entretien, irrigation, analyse de sol, etc.)"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Envoyer ma demande</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openModal() {
+            document.getElementById('quoteModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('quoteModal').classList.remove('active');
+        }
+
+        function handleQuote(e) {
+            e.preventDefault();
+            alert('Merci pour votre demande ! Notre équipe vous contactera dans les prochaines 24h pour planifier le diagnostic gratuit de votre exploitation.');
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('quoteModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Smooth scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .testimonial-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+                <h2>La Technologie au Service de Votre Terre</h2>
+                <p>
+                    Nous investissons massivement dans les équipements et technologies de pointe pour vous offrir un service d'excellence. Nos outils professionnels garantissent précision, efficacité et respect de l'environnement.
+                </p>
+                <p>
+                    Chaque intervention est planifiée et exécutée avec rigueur, grâce à des données en temps réel et une expertise agronomique reconnue.
+                </p>
+
+                <div class="tech-features">
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">🚁</div>
+                        <h4>Drones Agricoles</h4>
+                        <p>Cartographie 3D et épandage de précision</p>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">🤖</div>
+                        <h4>Robots de Désherbage</h4>
+                        <p>Automatisation écologique sans herbicides</p>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">📱</div>
+                        <h4>Application Mobile</h4>
+                        <p>Suivi en temps réel de votre exploitation</p>
+                    </div>
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">🌡️</div>
+                        <h4>Stations Météo</h4>
+                        <p>Données climatiques hyperlocales</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-
